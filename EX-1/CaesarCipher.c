@@ -1,16 +1,32 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
 int main()
 {
-char plaintext[100]={0}, ciphertext[100]={0};
-int c;
-printf("Plaintext:");
-while((c=getchar()) != '\n')
-{
-static int x=0, i=0;
-plaintext[i++]=(char)c;
-ciphertext[x++]=(char)(c+3);
-}
-printf("Cipher text:");
-printf("%s\n",ciphertext);
-return 0;
+        char s[50];
+        scanf("%s",s);
+        int k;
+        scanf("%d",&k);
+        for(int i=0;i<strlen(s);i++)
+        {
+                if(isalpha(s[i]))
+                {
+                        if(isupper(s[i]))
+                        {
+                                s[i]-=65;
+                                s[i]+=k;
+                                s[i]%=26;
+                                s[i]+=65;
+                        }
+                        else if(islower(s[i]))
+                        {
+                                s[i]-=97;
+                                s[i]+=k;
+                                s[i]%=26;
+                                s[i]+=97;
+                        }
+
+                }
+        }
+        printf("%s",s);
 }
